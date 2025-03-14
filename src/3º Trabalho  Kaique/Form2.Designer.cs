@@ -45,6 +45,9 @@
             this.label5 = new System.Windows.Forms.Label();
             this.label7 = new System.Windows.Forms.Label();
             this.label8 = new System.Windows.Forms.Label();
+            this.RBpronto = new System.Windows.Forms.RadioButton();
+            this.RBfazendo = new System.Windows.Forms.RadioButton();
+            this.RBafazer = new System.Windows.Forms.RadioButton();
             this.groupBox1.SuspendLayout();
             this.groupBox2.SuspendLayout();
             this.SuspendLayout();
@@ -52,6 +55,9 @@
             // groupBox1
             // 
             this.groupBox1.BackColor = System.Drawing.SystemColors.AppWorkspace;
+            this.groupBox1.Controls.Add(this.RBpronto);
+            this.groupBox1.Controls.Add(this.RBfazendo);
+            this.groupBox1.Controls.Add(this.RBafazer);
             this.groupBox1.Controls.Add(this.label9);
             this.groupBox1.Controls.Add(this.label4);
             this.groupBox1.Controls.Add(this.label3);
@@ -66,7 +72,7 @@
             this.groupBox1.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.groupBox1.Location = new System.Drawing.Point(181, 138);
             this.groupBox1.Name = "groupBox1";
-            this.groupBox1.Size = new System.Drawing.Size(417, 251);
+            this.groupBox1.Size = new System.Drawing.Size(417, 277);
             this.groupBox1.TabIndex = 7;
             this.groupBox1.TabStop = false;
             this.groupBox1.Text = "Crie uma tarefa";
@@ -147,7 +153,7 @@
             // 
             // BTNenviar
             // 
-            this.BTNenviar.Location = new System.Drawing.Point(63, 208);
+            this.BTNenviar.Location = new System.Drawing.Point(31, 248);
             this.BTNenviar.Name = "BTNenviar";
             this.BTNenviar.Size = new System.Drawing.Size(75, 23);
             this.BTNenviar.TabIndex = 5;
@@ -229,6 +235,39 @@
             this.label8.Text = "Tarefas";
             this.label8.Click += new System.EventHandler(this.label8_Click);
             // 
+            // RBpronto
+            // 
+            this.RBpronto.AutoSize = true;
+            this.RBpronto.Location = new System.Drawing.Point(296, 209);
+            this.RBpronto.Name = "RBpronto";
+            this.RBpronto.Size = new System.Drawing.Size(64, 20);
+            this.RBpronto.TabIndex = 21;
+            this.RBpronto.TabStop = true;
+            this.RBpronto.Text = "Pronto";
+            this.RBpronto.UseVisualStyleBackColor = true;
+            // 
+            // RBfazendo
+            // 
+            this.RBfazendo.AutoSize = true;
+            this.RBfazendo.Location = new System.Drawing.Point(176, 209);
+            this.RBfazendo.Name = "RBfazendo";
+            this.RBfazendo.Size = new System.Drawing.Size(78, 20);
+            this.RBfazendo.TabIndex = 20;
+            this.RBfazendo.TabStop = true;
+            this.RBfazendo.Text = "Fazendo";
+            this.RBfazendo.UseVisualStyleBackColor = true;
+            // 
+            // RBafazer
+            // 
+            this.RBafazer.AutoSize = true;
+            this.RBafazer.Location = new System.Drawing.Point(40, 209);
+            this.RBafazer.Name = "RBafazer";
+            this.RBafazer.Size = new System.Drawing.Size(66, 20);
+            this.RBafazer.TabIndex = 19;
+            this.RBafazer.TabStop = true;
+            this.RBafazer.Text = "A fazer";
+            this.RBafazer.UseVisualStyleBackColor = true;
+            // 
             // Form2
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -268,5 +307,8 @@
         private System.Windows.Forms.Label label8;
         private System.Windows.Forms.Label label9;
         private System.Windows.Forms.TextBox TXTtitulo;
+        private System.Windows.Forms.RadioButton RBpronto;
+        private System.Windows.Forms.RadioButton RBfazendo;
+        private System.Windows.Forms.RadioButton RBafazer;
     }
 }

@@ -33,15 +33,15 @@
             this.label5 = new System.Windows.Forms.Label();
             this.label7 = new System.Windows.Forms.Label();
             this.label8 = new System.Windows.Forms.Label();
-            this.cbxTarefas = new System.Windows.Forms.ComboBox();
+            this.CBXstatus = new System.Windows.Forms.ComboBox();
             this.label4 = new System.Windows.Forms.Label();
-            this.button5 = new System.Windows.Forms.Button();
-            this.button6 = new System.Windows.Forms.Button();
+            this.BTNproximo = new System.Windows.Forms.Button();
+            this.BTNanterior = new System.Windows.Forms.Button();
             this.groupBox1 = new System.Windows.Forms.GroupBox();
             this.lblId1 = new System.Windows.Forms.Label();
-            this.radioButton3 = new System.Windows.Forms.RadioButton();
-            this.radioButton2 = new System.Windows.Forms.RadioButton();
-            this.radioButton1 = new System.Windows.Forms.RadioButton();
+            this.RBpronto = new System.Windows.Forms.RadioButton();
+            this.RBfazendo = new System.Windows.Forms.RadioButton();
+            this.RBafazer = new System.Windows.Forms.RadioButton();
             this.label9 = new System.Windows.Forms.Label();
             this.label1 = new System.Windows.Forms.Label();
             this.label3 = new System.Windows.Forms.Label();
@@ -69,6 +69,7 @@
             this.button1 = new System.Windows.Forms.Button();
             this.TXTdescricao2 = new System.Windows.Forms.TextBox();
             this.label15 = new System.Windows.Forms.Label();
+            this.BTNbuscar = new System.Windows.Forms.Button();
             this.groupBox2.SuspendLayout();
             this.groupBox1.SuspendLayout();
             this.groupBox3.SuspendLayout();
@@ -134,17 +135,17 @@
             this.label8.Text = "Tarefas";
             this.label8.Click += new System.EventHandler(this.label8_Click);
             // 
-            // cbxTarefas
+            // CBXstatus
             // 
-            this.cbxTarefas.FormattingEnabled = true;
-            this.cbxTarefas.Items.AddRange(new object[] {
+            this.CBXstatus.FormattingEnabled = true;
+            this.CBXstatus.Items.AddRange(new object[] {
             "A fazer",
             "Fazendo",
-            "Pronta"});
-            this.cbxTarefas.Location = new System.Drawing.Point(31, 106);
-            this.cbxTarefas.Name = "cbxTarefas";
-            this.cbxTarefas.Size = new System.Drawing.Size(121, 21);
-            this.cbxTarefas.TabIndex = 13;
+            "Pronto"});
+            this.CBXstatus.Location = new System.Drawing.Point(31, 106);
+            this.CBXstatus.Name = "CBXstatus";
+            this.CBXstatus.Size = new System.Drawing.Size(121, 21);
+            this.CBXstatus.TabIndex = 13;
             // 
             // label4
             // 
@@ -155,32 +156,33 @@
             this.label4.TabIndex = 14;
             this.label4.Text = "Tarefas :";
             // 
-            // button5
+            // BTNproximo
             // 
-            this.button5.Location = new System.Drawing.Point(261, 104);
-            this.button5.Name = "button5";
-            this.button5.Size = new System.Drawing.Size(66, 23);
-            this.button5.TabIndex = 19;
-            this.button5.Text = "Próximas";
-            this.button5.UseVisualStyleBackColor = true;
-            this.button5.Click += new System.EventHandler(this.button5_Click);
+            this.BTNproximo.Location = new System.Drawing.Point(379, 106);
+            this.BTNproximo.Name = "BTNproximo";
+            this.BTNproximo.Size = new System.Drawing.Size(66, 23);
+            this.BTNproximo.TabIndex = 19;
+            this.BTNproximo.Text = "Próximas";
+            this.BTNproximo.UseVisualStyleBackColor = true;
+            this.BTNproximo.Click += new System.EventHandler(this.button5_Click);
             // 
-            // button6
+            // BTNanterior
             // 
-            this.button6.Location = new System.Drawing.Point(169, 104);
-            this.button6.Name = "button6";
-            this.button6.Size = new System.Drawing.Size(66, 23);
-            this.button6.TabIndex = 20;
-            this.button6.Text = "Anteriores";
-            this.button6.UseVisualStyleBackColor = true;
+            this.BTNanterior.Location = new System.Drawing.Point(287, 106);
+            this.BTNanterior.Name = "BTNanterior";
+            this.BTNanterior.Size = new System.Drawing.Size(66, 23);
+            this.BTNanterior.TabIndex = 20;
+            this.BTNanterior.Text = "Anteriores";
+            this.BTNanterior.UseVisualStyleBackColor = true;
+            this.BTNanterior.Click += new System.EventHandler(this.BTNanterior_Click);
             // 
             // groupBox1
             // 
             this.groupBox1.BackColor = System.Drawing.SystemColors.AppWorkspace;
             this.groupBox1.Controls.Add(this.lblId1);
-            this.groupBox1.Controls.Add(this.radioButton3);
-            this.groupBox1.Controls.Add(this.radioButton2);
-            this.groupBox1.Controls.Add(this.radioButton1);
+            this.groupBox1.Controls.Add(this.RBpronto);
+            this.groupBox1.Controls.Add(this.RBfazendo);
+            this.groupBox1.Controls.Add(this.RBafazer);
             this.groupBox1.Controls.Add(this.label9);
             this.groupBox1.Controls.Add(this.label1);
             this.groupBox1.Controls.Add(this.label3);
@@ -211,39 +213,39 @@
             this.lblId1.Visible = false;
             this.lblId1.Click += new System.EventHandler(this.lblId1_Click);
             // 
-            // radioButton3
+            // RBpronto
             // 
-            this.radioButton3.AutoSize = true;
-            this.radioButton3.Location = new System.Drawing.Point(277, 213);
-            this.radioButton3.Name = "radioButton3";
-            this.radioButton3.Size = new System.Drawing.Size(64, 20);
-            this.radioButton3.TabIndex = 18;
-            this.radioButton3.TabStop = true;
-            this.radioButton3.Text = "Pronto";
-            this.radioButton3.UseVisualStyleBackColor = true;
+            this.RBpronto.AutoSize = true;
+            this.RBpronto.Location = new System.Drawing.Point(277, 213);
+            this.RBpronto.Name = "RBpronto";
+            this.RBpronto.Size = new System.Drawing.Size(64, 20);
+            this.RBpronto.TabIndex = 18;
+            this.RBpronto.TabStop = true;
+            this.RBpronto.Text = "Pronto";
+            this.RBpronto.UseVisualStyleBackColor = true;
             // 
-            // radioButton2
+            // RBfazendo
             // 
-            this.radioButton2.AutoSize = true;
-            this.radioButton2.Location = new System.Drawing.Point(157, 213);
-            this.radioButton2.Name = "radioButton2";
-            this.radioButton2.Size = new System.Drawing.Size(78, 20);
-            this.radioButton2.TabIndex = 17;
-            this.radioButton2.TabStop = true;
-            this.radioButton2.Text = "Fazendo";
-            this.radioButton2.UseVisualStyleBackColor = true;
+            this.RBfazendo.AutoSize = true;
+            this.RBfazendo.Location = new System.Drawing.Point(157, 213);
+            this.RBfazendo.Name = "RBfazendo";
+            this.RBfazendo.Size = new System.Drawing.Size(78, 20);
+            this.RBfazendo.TabIndex = 17;
+            this.RBfazendo.TabStop = true;
+            this.RBfazendo.Text = "Fazendo";
+            this.RBfazendo.UseVisualStyleBackColor = true;
             // 
-            // radioButton1
+            // RBafazer
             // 
-            this.radioButton1.AutoSize = true;
-            this.radioButton1.Location = new System.Drawing.Point(21, 213);
-            this.radioButton1.Name = "radioButton1";
-            this.radioButton1.Size = new System.Drawing.Size(66, 20);
-            this.radioButton1.TabIndex = 16;
-            this.radioButton1.TabStop = true;
-            this.radioButton1.Text = "A fazer";
-            this.radioButton1.UseVisualStyleBackColor = true;
-            this.radioButton1.CheckedChanged += new System.EventHandler(this.radioButton1_CheckedChanged);
+            this.RBafazer.AutoSize = true;
+            this.RBafazer.Location = new System.Drawing.Point(21, 213);
+            this.RBafazer.Name = "RBafazer";
+            this.RBafazer.Size = new System.Drawing.Size(66, 20);
+            this.RBafazer.TabIndex = 16;
+            this.RBafazer.TabStop = true;
+            this.RBafazer.Text = "A fazer";
+            this.RBafazer.UseVisualStyleBackColor = true;
+            this.RBafazer.CheckedChanged += new System.EventHandler(this.radioButton1_CheckedChanged);
             // 
             // label9
             // 
@@ -327,6 +329,7 @@
             this.BTNenviar.TabIndex = 5;
             this.BTNenviar.Text = "Enviar";
             this.BTNenviar.UseVisualStyleBackColor = true;
+            this.BTNenviar.Click += new System.EventHandler(this.BTNenviar_Click);
             // 
             // TXTdescricao1
             // 
@@ -497,6 +500,7 @@
             this.button1.TabIndex = 5;
             this.button1.Text = "Enviar";
             this.button1.UseVisualStyleBackColor = true;
+            this.button1.Click += new System.EventHandler(this.button1_Click);
             // 
             // TXTdescricao2
             // 
@@ -515,18 +519,29 @@
             this.label15.TabIndex = 2;
             this.label15.Text = "Descrição";
             // 
+            // BTNbuscar
+            // 
+            this.BTNbuscar.Location = new System.Drawing.Point(181, 106);
+            this.BTNbuscar.Name = "BTNbuscar";
+            this.BTNbuscar.Size = new System.Drawing.Size(66, 23);
+            this.BTNbuscar.TabIndex = 23;
+            this.BTNbuscar.Text = "Buscar";
+            this.BTNbuscar.UseVisualStyleBackColor = true;
+            this.BTNbuscar.Click += new System.EventHandler(this.BTNbuscar_Click);
+            // 
             // Form3
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.Color.Silver;
             this.ClientSize = new System.Drawing.Size(837, 450);
+            this.Controls.Add(this.BTNbuscar);
             this.Controls.Add(this.groupBox3);
             this.Controls.Add(this.groupBox1);
-            this.Controls.Add(this.button6);
-            this.Controls.Add(this.button5);
+            this.Controls.Add(this.BTNanterior);
+            this.Controls.Add(this.BTNproximo);
             this.Controls.Add(this.label4);
-            this.Controls.Add(this.cbxTarefas);
+            this.Controls.Add(this.CBXstatus);
             this.Controls.Add(this.groupBox2);
             this.Name = "Form3";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
@@ -550,12 +565,12 @@
         private System.Windows.Forms.Label label5;
         private System.Windows.Forms.Label label7;
         private System.Windows.Forms.Label label8;
-        private System.Windows.Forms.ComboBox cbxTarefas;
+        private System.Windows.Forms.ComboBox CBXstatus;
         private System.Windows.Forms.Label label4;
-        private System.Windows.Forms.Button button5;
-        private System.Windows.Forms.Button button6;
+        private System.Windows.Forms.Button BTNproximo;
+        private System.Windows.Forms.Button BTNanterior;
         private System.Windows.Forms.GroupBox groupBox1;
-        private System.Windows.Forms.RadioButton radioButton1;
+        private System.Windows.Forms.RadioButton RBafazer;
         private System.Windows.Forms.Label label9;
         private System.Windows.Forms.Label label1;
         private System.Windows.Forms.Label label3;
@@ -567,8 +582,8 @@
         private System.Windows.Forms.Button BTNenviar;
         private System.Windows.Forms.TextBox TXTdescricao1;
         private System.Windows.Forms.Label label10;
-        private System.Windows.Forms.RadioButton radioButton3;
-        private System.Windows.Forms.RadioButton radioButton2;
+        private System.Windows.Forms.RadioButton RBpronto;
+        private System.Windows.Forms.RadioButton RBfazendo;
         private System.Windows.Forms.GroupBox groupBox3;
         private System.Windows.Forms.Label label11;
         private System.Windows.Forms.Label label12;
@@ -586,5 +601,6 @@
         private System.Windows.Forms.RadioButton radioButton4;
         private System.Windows.Forms.RadioButton radioButton5;
         private System.Windows.Forms.RadioButton radioButton6;
+        private System.Windows.Forms.Button BTNbuscar;
     }
 }

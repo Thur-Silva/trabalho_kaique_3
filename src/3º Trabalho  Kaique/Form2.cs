@@ -41,70 +41,97 @@ namespace _3º_Trabalho__Kaique
 
         private void BTNenviar_Click(object sender, EventArgs e)
         {
-            string connString = "server=localhost;database=gerenciador;uid=root;pwd=;";
+                string connString = "server=localhost;database=gerenciador;uid=root;pwd=;";
 
-            using (MySqlConnection conn = new MySqlConnection(connString))
-            {
-                try
+                using (MySqlConnection conn = new MySqlConnection(connString))
                 {
-                    conn.Open();
-                    ///
-
-                    string titulo = TXTtitulo.Text.Trim();
-                    string descricao = TXTdescricao.Text.Trim();
-                    string usuario = CBXusuario.SelectedItem != null ? CBXusuario.SelectedItem.ToString() : "";
-                    string setor = CBXsetor.SelectedItem != null ? CBXsetor.SelectedItem.ToString() : "";
-                    string prioridade = CBXprioridade.SelectedItem != null ? CBXprioridade.SelectedItem.ToString() : "";
-
-                    // 2) Validação simples
-                    if (string.IsNullOrEmpty(titulo) || string.IsNullOrEmpty(descricao) ||
-                        string.IsNullOrEmpty(usuario) || string.IsNullOrEmpty(setor) ||
-                        string.IsNullOrEmpty(prioridade))
+                    try
                     {
-                        MessageBox.Show("Por favor, preencha todos os campos antes de enviar.");
-                        return;
+                        conn.Open();
+
+                        // 1) Recuperar o último ID da tabela
+                        string getLastIdQuery = "SELECT MAX(id) FROM cadastro";
+                        int nextId = 1; // Valor padrão para o primeiro ID
+
+                        using (MySqlCommand cmd = new MySqlCommand(getLastIdQuery, conn))
+                        {
+                            object result = cmd.ExecuteScalar();
+                            if (result != DBNull.Value)
+                            {
+                                nextId = Convert.ToInt32(result) + 1;
+                            }
+                        }
+
+                        // 2) Coletar os dados do formulário
+                        string titulo = TXTtitulo.Text.Trim();
+                        string descricao = TXTdescricao.Text.Trim();
+                        string usuario = CBXusuario.SelectedItem != null ? CBXusuario.SelectedItem.ToString() : "";
+                        string setor = CBXsetor.SelectedItem != null ? CBXsetor.SelectedItem.ToString() : "";
+                        string prioridade = CBXprioridade.SelectedItem != null ? CBXprioridade.SelectedItem.ToString() : "";
+                        string status = "A fazer"; // Valor padrão
+
+                        if (RBfazendo.Checked)
+                        {
+                            status = "Fazendo";
+                        }
+                        else if (RBpronto.Checked)
+                        {
+                            status = "Pronto";
+                        }
+
+                        // 3) Validação simples
+                        if (string.IsNullOrEmpty(titulo) || string.IsNullOrEmpty(descricao) ||
+                            string.IsNullOrEmpty(usuario) || string.IsNullOrEmpty(setor) ||
+                            string.IsNullOrEmpty(prioridade))
+                        {
+                            MessageBox.Show("Por favor, preencha todos os campos antes de enviar.");
+                            return;
+                        }
+
+                        // 4) Montar a query de inserção
+                        string query = @"INSERT INTO cadastro 
+                            (id, titulo, descricao, usuario, setor, prioridade, status) 
+                         VALUES 
+                            (@id, @titulo, @descricao, @usuario, @setor, @prioridade, @status)";
+
+                        using (MySqlCommand cmd = new MySqlCommand(query, conn))
+                        {
+                            // 5) Adicionar parâmetros, incluindo o ID incrementado
+                            cmd.Parameters.AddWithValue("@id", nextId);
+                            cmd.Parameters.AddWithValue("@titulo", titulo);
+                            cmd.Parameters.AddWithValue("@descricao", descricao);
+                            cmd.Parameters.AddWithValue("@usuario", usuario);
+                            cmd.Parameters.AddWithValue("@setor", setor);
+                            cmd.Parameters.AddWithValue("@prioridade", prioridade);
+                            cmd.Parameters.AddWithValue("@status", status);
+
+                            // 6) Executar o comando
+                            int rowsAffected = cmd.ExecuteNonQuery();
+
+                            if (rowsAffected > 0)
+                            {
+                                MessageBox.Show("Registro inserido com sucesso!");
+
+                                // Limpar os campos após inserir
+                                TXTtitulo.Clear();
+                                TXTdescricao.Clear();
+                                CBXusuario.SelectedIndex = -1;
+                                CBXsetor.SelectedIndex = -1;
+                                CBXprioridade.SelectedIndex = -1;
+                                RBafazer.Checked = true;
+                            }
+                            else
+                            {
+                                MessageBox.Show("Não foi possível inserir o registro.");
+                            }
+                        }
                     }
-
-                    // 3) Montar a query de inserção
-                    string query = @"INSERT INTO cadastro 
-                                (titulo, descricao, usuario, setor, prioridade) 
-                             VALUES 
-                                (@titulo, @descricao, @usuario, @setor, @prioridade)";
-
-                    using (MySqlCommand cmd = new MySqlCommand(query, conn))
+                    catch (Exception ex)
                     {
-                        // 4) Adicionar parâmetros
-                        cmd.Parameters.AddWithValue("@titulo", titulo);
-                        cmd.Parameters.AddWithValue("@descricao", descricao);
-                        cmd.Parameters.AddWithValue("@usuario", usuario);
-                        cmd.Parameters.AddWithValue("@setor", setor);
-                        cmd.Parameters.AddWithValue("@prioridade", prioridade);
-
-                        // 5) Executar o comando
-                        int rowsAffected = cmd.ExecuteNonQuery();
-
-                        if (rowsAffected > 0)
-                        {
-                            MessageBox.Show("Registro inserido com sucesso!");
-
-                            // Limpar os campos após inserir
-                            TXTtitulo.Clear();
-                            TXTdescricao.Clear();
-                            CBXusuario.SelectedIndex = -1;
-                            CBXsetor.SelectedIndex = -1;
-                            CBXprioridade.SelectedIndex = -1;
-                        }
-                        else
-                        {
-                            MessageBox.Show("Não foi possível inserir o registro.");
-                        }
+                        MessageBox.Show("Erro: " + ex.Message);
                     }
-                }
-                catch (Exception ex)
-                {
-                    MessageBox.Show("Erro: " + ex.Message);
                 }
             }
+
         }
     }
-}
