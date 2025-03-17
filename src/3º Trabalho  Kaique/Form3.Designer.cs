@@ -54,10 +54,10 @@
             this.TXTdescricao1 = new System.Windows.Forms.TextBox();
             this.label10 = new System.Windows.Forms.Label();
             this.groupBox3 = new System.Windows.Forms.GroupBox();
-            this.radioButton4 = new System.Windows.Forms.RadioButton();
+            this.RBpronto2 = new System.Windows.Forms.RadioButton();
             this.label11 = new System.Windows.Forms.Label();
-            this.radioButton5 = new System.Windows.Forms.RadioButton();
-            this.radioButton6 = new System.Windows.Forms.RadioButton();
+            this.RBfazendo2 = new System.Windows.Forms.RadioButton();
+            this.RBafazer2 = new System.Windows.Forms.RadioButton();
             this.label12 = new System.Windows.Forms.Label();
             this.lblId2 = new System.Windows.Forms.Label();
             this.label13 = new System.Windows.Forms.Label();
@@ -351,10 +351,10 @@
             // groupBox3
             // 
             this.groupBox3.BackColor = System.Drawing.SystemColors.AppWorkspace;
-            this.groupBox3.Controls.Add(this.radioButton4);
+            this.groupBox3.Controls.Add(this.RBpronto2);
             this.groupBox3.Controls.Add(this.label11);
-            this.groupBox3.Controls.Add(this.radioButton5);
-            this.groupBox3.Controls.Add(this.radioButton6);
+            this.groupBox3.Controls.Add(this.RBfazendo2);
+            this.groupBox3.Controls.Add(this.RBafazer2);
             this.groupBox3.Controls.Add(this.label12);
             this.groupBox3.Controls.Add(this.lblId2);
             this.groupBox3.Controls.Add(this.label13);
@@ -374,16 +374,16 @@
             this.groupBox3.TabStop = false;
             this.groupBox3.Text = "Crie uma tarefa";
             // 
-            // radioButton4
+            // RBpronto2
             // 
-            this.radioButton4.AutoSize = true;
-            this.radioButton4.Location = new System.Drawing.Point(287, 213);
-            this.radioButton4.Name = "radioButton4";
-            this.radioButton4.Size = new System.Drawing.Size(64, 20);
-            this.radioButton4.TabIndex = 27;
-            this.radioButton4.TabStop = true;
-            this.radioButton4.Text = "Pronto";
-            this.radioButton4.UseVisualStyleBackColor = true;
+            this.RBpronto2.AutoSize = true;
+            this.RBpronto2.Location = new System.Drawing.Point(287, 213);
+            this.RBpronto2.Name = "RBpronto2";
+            this.RBpronto2.Size = new System.Drawing.Size(64, 20);
+            this.RBpronto2.TabIndex = 27;
+            this.RBpronto2.TabStop = true;
+            this.RBpronto2.Text = "Pronto";
+            this.RBpronto2.UseVisualStyleBackColor = true;
             // 
             // label11
             // 
@@ -394,27 +394,27 @@
             this.label11.TabIndex = 15;
             this.label11.Text = "Título";
             // 
-            // radioButton5
+            // RBfazendo2
             // 
-            this.radioButton5.AutoSize = true;
-            this.radioButton5.Location = new System.Drawing.Point(167, 213);
-            this.radioButton5.Name = "radioButton5";
-            this.radioButton5.Size = new System.Drawing.Size(78, 20);
-            this.radioButton5.TabIndex = 26;
-            this.radioButton5.TabStop = true;
-            this.radioButton5.Text = "Fazendo";
-            this.radioButton5.UseVisualStyleBackColor = true;
+            this.RBfazendo2.AutoSize = true;
+            this.RBfazendo2.Location = new System.Drawing.Point(167, 213);
+            this.RBfazendo2.Name = "RBfazendo2";
+            this.RBfazendo2.Size = new System.Drawing.Size(78, 20);
+            this.RBfazendo2.TabIndex = 26;
+            this.RBfazendo2.TabStop = true;
+            this.RBfazendo2.Text = "Fazendo";
+            this.RBfazendo2.UseVisualStyleBackColor = true;
             // 
-            // radioButton6
+            // RBafazer2
             // 
-            this.radioButton6.AutoSize = true;
-            this.radioButton6.Location = new System.Drawing.Point(31, 213);
-            this.radioButton6.Name = "radioButton6";
-            this.radioButton6.Size = new System.Drawing.Size(66, 20);
-            this.radioButton6.TabIndex = 25;
-            this.radioButton6.TabStop = true;
-            this.radioButton6.Text = "A fazer";
-            this.radioButton6.UseVisualStyleBackColor = true;
+            this.RBafazer2.AutoSize = true;
+            this.RBafazer2.Location = new System.Drawing.Point(31, 213);
+            this.RBafazer2.Name = "RBafazer2";
+            this.RBafazer2.Size = new System.Drawing.Size(66, 20);
+            this.RBafazer2.TabIndex = 25;
+            this.RBafazer2.TabStop = true;
+            this.RBafazer2.Text = "A fazer";
+            this.RBafazer2.UseVisualStyleBackColor = true;
             // 
             // label12
             // 
@@ -598,9 +598,9 @@
         private System.Windows.Forms.Label label15;
         private System.Windows.Forms.Label lblId2;
         private System.Windows.Forms.Label lblId1;
-        private System.Windows.Forms.RadioButton radioButton4;
-        private System.Windows.Forms.RadioButton radioButton5;
-        private System.Windows.Forms.RadioButton radioButton6;
+        private System.Windows.Forms.RadioButton RBpronto2;
+        private System.Windows.Forms.RadioButton RBfazendo2;
+        private System.Windows.Forms.RadioButton RBafazer2;
         private System.Windows.Forms.Button BTNbuscar;
     }
 }

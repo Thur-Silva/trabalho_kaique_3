@@ -46,14 +46,7 @@ namespace _3º_Trabalho__Kaique
 
         private void button5_Click(object sender, EventArgs e)
         {
-            if (lastId == -1)
-            {
-                MessageBox.Show("Nenhum registro carregado ainda.");
-                return;
-            }
-
-            // Passa para os dois registros mais antigos (offset + 2)
-            BuscarRegistros("server=localhost;database=gerenciador;uid=root;pwd=;", status1, lastId + 1);
+      
         }
 
         private void radioButton1_CheckedChanged(object sender, EventArgs e)
@@ -79,81 +72,12 @@ namespace _3º_Trabalho__Kaique
 
         private void button1_Click(object sender, EventArgs e)
         {
-            string connString = "server=localhost;database=gerenciador;uid=root;pwd=;";
-
-            using (MySqlConnection conn = new MySqlConnection(connString))
-            {
-                try
-                {
-                    conn.Open();
-
-                    // Exemplo: Buscar pelo título. Você pode alterar para outro critério de busca.
-                    string status1 = CBXstatus.Text.Trim();
-
-                    if (string.IsNullOrEmpty(status1))
-                    {
-                        MessageBox.Show("Por favor, insira o título para buscar.");
-                        return;
-                    }
-
-                    // Consulta SQL para buscar o registro com base no título
-                    string selectQuery = @"SELECT titulo, descricao, usuario, setor, prioridade, status 
-                                   FROM cadastro 
-                                   WHERE status = @status";
-
-                    using (MySqlCommand selectCmd = new MySqlCommand(selectQuery, conn))
-
-                    {
-                        // Adiciona o parâmetro para evitar SQL Injection
-                        selectCmd.Parameters.AddWithValue("@status", status1);
-
-                        using (MySqlDataReader reader = selectCmd.ExecuteReader())
-                        {
-                            if (reader.Read())
-                            {
-                                // Preencher os campos com os dados recuperados
-                                TXTtitulo1.Text = reader["titulo"].ToString();
-                                TXTdescricao1.Text = reader["descricao"].ToString();
-                                CBXusuario1.SelectedItem = reader["usuario"].ToString();
-                                CBXsetor1.SelectedItem = reader["setor"].ToString();
-                                CBXprioridade1.SelectedItem = reader["prioridade"].ToString();
-
-                                // Preencher e ativar o radio button com base no status recuperado
-                                string status = reader["status"].ToString();
-                                switch (status)
-                                {
-                                    case "A fazer":
-                                        RBafazer.Checked = true;
-                                        break;
-                                    case "Fazendo":
-                                        RBfazendo.Checked = true;
-                                        break;
-                                    case "Pronto":
-                                        RBpronto.Checked = true;
-                                        break;
-                                    default:
-                                        // Caso o status não seja reconhecido, deixar "A fazer" como padrão
-                                        RBafazer.Checked = true;
-                                        break;
-                                }
-                            }
-                            else
-                            {
-                                MessageBox.Show("Nenhum registro encontrado para o título fornecido.");
-                            }
-                        }
-                    }
-                }
-                catch (Exception ex)
-                {
-                    MessageBox.Show("Erro: " + ex.Message);
-                }
-            }
+           
         }
 
         // Variáveis de controle
         private int lastId = -1;  // Armazena o último id exibido (inicialmente nenhum)
-        private string status1 = "";  // Renomeado de status para status1
+        private string comboStatus = "";  // Renomeado de status para comboStatus
 
         private void BTNenviar_Click(object sender, EventArgs e)
         {
@@ -174,7 +98,7 @@ namespace _3º_Trabalho__Kaique
                 FROM cadastro
                 WHERE status = @status
                 ORDER BY id DESC
-                LIMIT 2 OFFSET @offset";  // Usando OFFSET para navegar pelos registros
+                LIMIT 2 OFFSET @offset";  
 
                     using (MySqlCommand selectCmd = new MySqlCommand(selectQuery, conn))
                     {
@@ -237,23 +161,22 @@ namespace _3º_Trabalho__Kaique
                                         switch (recordStatus)
                                         {
                                             case "A fazer":
-                                                RBafazer.Checked = true;
+                                                RBafazer2.Checked = true;
                                                 break;
                                             case "Fazendo":
-                                                RBfazendo.Checked = true;
+                                                RBfazendo2.Checked = true;
                                                 break;
                                             case "Pronto":
-                                                RBpronto.Checked = true;
+                                                RBpronto2.Checked = true;
                                                 break;
                                             default:
-                                                RBafazer.Checked = true; // Padrão
+                                                RBafazer2.Checked = true; // Padrão
                                                 break;
                                         }
                                     }
                                 }
 
-                                // Atualiza o último id exibido (último registro)
-                                lastId = firstId;
+                              
                             }
                             else
                             {
@@ -272,21 +195,7 @@ namespace _3º_Trabalho__Kaique
 
         private void BTNanterior_Click(object sender, EventArgs e)
         {
-            if (lastId == -1)
-            {
-                MessageBox.Show("Nenhum registro carregado ainda.");
-                return;
-            }
-
-            // Passa para os dois registros mais recentes (offset - 2)
-            if (lastId > 2) // Garante que não passará do primeiro registro
-            {
-                BuscarRegistros("server=localhost;database=gerenciador;uid=root;pwd=;", status1, lastId - 2);
-            }
-            else
-            {
-                MessageBox.Show("Você está na primeira página de registros.");
-            }
+           
         }
 
         private void BTNbuscar_Click(object sender, EventArgs e)
@@ -300,10 +209,10 @@ namespace _3º_Trabalho__Kaique
                 return;
             }
 
-            // Renomeia a variável aqui para "status1"
-            status1 = CBXstatus.SelectedItem.ToString().Trim();
+            // Renomeia a variável aqui para "comboStatus"
+            comboStatus = CBXstatus.SelectedItem.ToString().Trim();
 
-            BuscarRegistros(connString, status1, 0);  // Chama a função de busca com offset 0 (primeira vez)
+            BuscarRegistros(connString, comboStatus, 0);  // Chama a função de busca com offset 0 (primeira vez)
         }
     }
 }
